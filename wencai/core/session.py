@@ -10,10 +10,9 @@ class Session(requests.Session):
         "Accept-Encoding": "gzip, deflate",
         "Accept-Language": "zh-CN,zh;q=0.8",
         'Connection': 'keep-alive',
-        'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8",
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36",
-        'X-Requested-With': "XMLHttpRequest"
-
+        'Content-Type': "application/x-www-form-urlencoded",
+        'host': "search.10jqka.com.cn",
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
     }
 
     def __init__(self, proxies=None, verify=False):
@@ -52,3 +51,22 @@ class Session(requests.Session):
         else:
             return super(Session, self).post(url=url, data=data, json=json, proxies=self.proxies, verify=self.verify,
                                              **kwargs)
+
+
+# if __name__ == '__main__':
+#     session = Session()
+#     url = "http://search.10jqka.com.cn/unifiedwap/unified-wap/v2/result/get-robot-data"
+#     payload = {
+#         "question": '人气排名',
+#         "page": 1,
+#         "perpage": 50,
+#         "log_info": '{"input_type": "typewrite"}',
+#         "source": "Ths_iwencai_Xuangu",
+#         "version": 2.0,
+#         "secondary_intent": "",
+#         "query_area": "",
+#         "block_list": "",
+#         "add_info": '{"urp": {"scene": 1, "company": 1, "business": 1}, "contentType": "json", "searchInfo": true}'
+#     }
+#     res = session.post_result(url=url, data=payload)
+#     print(res.text)
